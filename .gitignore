@@ -1,0 +1,26 @@
+# Local environment variables
+.env
+
+# Python virtual environment
+.venv/
+env/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+
+# Video-Agent Specific
+downloads/
+*.wav
+*.mp3
+*.mp4
+*.webm
+*.m4a
+*.pdf

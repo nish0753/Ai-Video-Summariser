@@ -1,0 +1,16 @@
+# Core App & UI
+streamlit==1.57.0
+
+# Audio & Video Processing
+yt-dlp==2026.3.17
+pydub==0.25.1
+
+# Math
+numpy==2.4.6
+
+# Utilities & API calls
+python-dotenv==1.2.2
+requests==2.34.2
+
+# PDF Generation (Revision Guide)
+fpdf2==2.8.7
