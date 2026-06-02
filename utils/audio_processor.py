@@ -26,10 +26,12 @@ def download_youtube_audio(url: str) -> str:
         "outtmpl": output_path,
         "quiet": True,
         "noplaylist": True,
-        "js_runtimes": ["nodejs"],
         "rm_cachedir": True,
-        "extractor_args": {"youtube": ["player_client=ios,android,web"]},
-        "remote_components": ["ejs:github"],
+        # js_runtimes MUST be a dict {runtime_name: {config}} — yt-dlp source confirms this
+        "js_runtimes": {"node": {}},
+        # remote_components MUST be a set — yt-dlp source confirms this
+        "remote_components": {"ejs:github"},
+        "extractor_args": {"youtube": {"player_client": ["ios", "web"]}},
         "postprocessors": [{
             "key": "FFmpegExtractAudio",
             "preferredcodec": "m4a",
