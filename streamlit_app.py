@@ -358,8 +358,8 @@ for k, v in {
 
 
 def append_log(message: str):
-    from datetime import datetime
-    ts = datetime.utcnow().strftime("%H:%M:%S")
+    from datetime import datetime, timezone
+    ts = datetime.now(timezone.utc).strftime("%H:%M:%S")
     st.session_state["log"].append(f"[{ts}] {message}")
     st.session_state["log"] = st.session_state["log"][-200:]
 
