@@ -26,7 +26,8 @@ def download_youtube_audio(url: str) -> str:
         "outtmpl": output_path,
         "quiet": True,
         "noplaylist": True,
-        "extractor_args": {"youtube": ["player_client=default,-android_sdkless"]},
+        "rm_cachedir": True,
+        "extractor_args": {"youtube": ["player_client=ios,android,web"]},
         "remote_components": ["ejs:github"],
         "postprocessors": [{
             "key": "FFmpegExtractAudio",
