@@ -27,11 +27,9 @@ def download_youtube_audio(url: str) -> str:
         "quiet": True,
         "noplaylist": True,
         "rm_cachedir": True,
-        # js_runtimes MUST be a dict {runtime_name: {config}} — yt-dlp source confirms this
-        "js_runtimes": {"node": {}},
-        # remote_components MUST be a set — yt-dlp source confirms this
-        "remote_components": {"ejs:github"},
-        "extractor_args": {"youtube": {"player_client": ["ios", "web"]}},
+        # web_embedded and mweb are less restricted clients that don't require a PO Token
+        # ios/android/web require a GVS PO Token on datacenter IPs and will 403
+        "extractor_args": {"youtube": {"player_client": ["web_embedded", "mweb"]}},
         "postprocessors": [{
             "key": "FFmpegExtractAudio",
             "preferredcodec": "m4a",
