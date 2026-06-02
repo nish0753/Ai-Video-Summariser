@@ -498,9 +498,13 @@ else:
         st.markdown("<div style='margin-top:4px;'></div>", unsafe_allow_html=True)
         if st.button("⬇ Fetch", use_container_width=True) and url:
             with st.spinner("Downloading & chunking…"):
-                st.session_state["chunks"] = process_input(url, chunk_minutes=max_chunk_minutes)
-                st.session_state["status"] = f"Ready — {len(st.session_state['chunks'])} chunk(s)"
-                append_log(f"Fetched YouTube audio → {len(st.session_state['chunks'])} chunk(s)")
+                try:
+                    st.session_state["chunks"] = process_input(url, chunk_minutes=max_chunk_minutes)
+                    st.session_state["status"] = f"Ready — {len(st.session_state['chunks'])} chunk(s)"
+                    append_log(f"Fetched YouTube audio → {len(st.session_state['chunks'])} chunk(s)")
+                except Exception as e:
+                    st.error(f"YouTube Download Failed: {e}")
+                    append_log(f"Download Error: {e}")
                 refresh_log()
 
 st.markdown("</div>", unsafe_allow_html=True)
